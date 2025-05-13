@@ -13,7 +13,8 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
       - name: Login to Docker Hub
         uses: docker/login-action@v2
@@ -21,26 +22,28 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and push blog-api
+      - name: Build and Push blog-api
         uses: docker/build-push-action@v4
         with:
           context: ./blog-api
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/blog-api:latest      
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/blog-api:latest
+
+      - name: Build and Push auth
         uses: docker/build-push-action@v4
         with:
           context: ./auth
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/auth:latest
 
-      - name: Build and push analytics
+      - name: Build and Push analytics
         uses: docker/build-push-action@v4
         with:
           context: ./analytics
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/analytics:latest
 
-      - name: Build and push apache
+      - name: Build and Push apache
         uses: docker/build-push-action@v4
         with:
           context: ./apache
