@@ -26,14 +26,14 @@ jobs:
         with:
           context: ./blog-api
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/blog-api:latest
-
-      - name: Build and push auth
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/blog-api:latest      - name: Build and push auth
         uses: docker/build-push-action@v4
         with:
           context: ./auth
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/auth:latest      
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/auth:latest
+
+      - name: Build and push analytics
         uses: docker/build-push-action@v4
         with:
           context: ./analytics
