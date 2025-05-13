@@ -1,0 +1,24 @@
+# Ignore all files by default
+*
+
+# Allow specific files and directories
+!src/
+!package.json
+!package-lock.json
+
+# Exclude development and unnecessary files
+.git
+.gitignore
+.DS_Store
+.dockerignore
+node_modules/
+npm-debug.log
+yarn-error.log
+.env
+*.md
+*.txt
+coverage/
+test/
+tests/
+.vscode/
+.idea/

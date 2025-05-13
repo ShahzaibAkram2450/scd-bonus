@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blog-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: blog-api
+  template:
+    metadata:
+      labels:
+        app: blog-api
+    spec:
+      containers:
+        - name: blog-api
+          image: sodapopin/blog-api:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: "production"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blog-api
+spec:
+  type: ClusterIP
+  selector:
+    app: blog-api
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
