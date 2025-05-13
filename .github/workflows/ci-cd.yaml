@@ -26,7 +26,7 @@ jobs:
         with:
           context: ./blog-api
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/blog-api:latest      - name: Build and push auth
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/blog-api:latest      
         uses: docker/build-push-action@v4
         with:
           context: ./auth
