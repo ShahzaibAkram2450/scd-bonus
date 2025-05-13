@@ -40,12 +40,9 @@ jobs:
         with:
           context: ./analytics
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/analytics:latest
-
-      - name: Build and push apache
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/analytics:latest      - name: Build and push apache
         uses: docker/build-push-action@v4
         with:
-          context: .
-          file: ./apache/Dockerfile
+          context: ./apache
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/apache-reverse-proxy:latest
