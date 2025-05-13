@@ -33,15 +33,15 @@ jobs:
         with:
           context: ./auth
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/auth:latest
-
-      - name: Build and push analytics
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/auth:latest      - name: Build and push analytics
         uses: docker/build-push-action@v4
         with:
           context: ./analytics
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/analytics:latest      
-          uses: docker/build-push-action@v4
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/analytics:latest
+
+      - name: Build and push apache
+        uses: docker/build-push-action@v4
         with:
           context: ./apache
           push: true
